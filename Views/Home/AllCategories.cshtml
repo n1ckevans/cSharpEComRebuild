@@ -1,0 +1,35 @@
+@model Category
+
+@{
+    ViewData["Title"] = "All Products";
+}
+
+<partial name="_Header"></partial>
+
+<h3 class="text-center">All Categories</h3>
+
+<div class="row">
+
+
+
+  @foreach (Category cat in ViewBag.AllCats)
+{
+
+     <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+            
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="/category/@cat.CategoryId">@cat.Name</a>
+                </h4>
+                
+              </div>
+             
+            </div>
+          </div>
+
+  
+}
+
+
+</div>

@@ -1,0 +1,51 @@
+@{
+    ViewData["Title"] = "Admin Category";
+}
+
+<partial name="_AdminHeader"></partial>
+
+@model Association
+
+<h1 class="text-center my-2">@ViewBag.CurrentCat.Name</h1>
+
+ <div class="container mt-5">
+    <div class="row">
+        <div class="col-md">
+            <h3>Products</h3>
+              <ul class="list-group">
+
+                @foreach (Product prod in ViewBag.ShowProds)
+                {
+                  <li class="list-group-item">@prod.Name</li>
+                  
+                }
+
+             </ul>
+
+        </div>
+        <div class="col-md">
+            
+            <form asp-controller="Admin" asp-action="AddCatProd">
+
+              <div class="form-group">
+                <label asp-for="ProductId">Products</label>
+                <span class="text-danger font-weight-bold" asp-validation-for="ProductId"></span>
+                <select asp-for="ProductId">
+                     @foreach (Product prod in ViewBag.AddProds)
+                    {
+                    
+                      <option value="@prod.ProductId">@prod.Name</option>
+                      
+                    }
+              </select>
+               <input asp-for="CategoryId" type="hidden" value="@ViewBag.CurrentCat.CategoryId">
+              </div>
+              
+             
+              
+              <button class="btn btn-info" type="submit">Add</button>
+            </form>
+            
+        </div>
+    </div>
+</div>

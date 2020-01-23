@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "All Categories";
+}
+
+ <partial name="_AdminHeader"></partial>
+
+<h3 class="text-center my-2">All Categories</h3>
+
+<div class="row">
+
+
+
+  @foreach (Category cat in ViewBag.AllCats)
+{
+
+     <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+            
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="/admincategory/@cat.CategoryId">@cat.Name</a>
+                </h4>
+                <a class="btn btn-danger" href="/deletecat/@cat.CategoryId/">Delete</a>
+              </div>
+             
+            </div>
+          </div>
+
+  
+}
+
+
+</div>

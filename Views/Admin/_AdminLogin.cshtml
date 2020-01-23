@@ -1,0 +1,29 @@
+@model LoginUser
+
+@{
+    ViewData["Title"] = "Admin Login";
+}
+
+
+
+<h3 class="text-center">Admin Login</h3>
+<hr>
+
+<form asp-action="Login" asp-controller="Admin">
+          
+  <div class="form-group">
+    <label asp-for="LoginEmail"></label>
+    <span class="text-danger font-weight-bold" asp-validation-for="LoginEmail"></span>
+    <input class="form-control" asp-for="LoginEmail" value="admin@admin.com">
+  </div>
+
+  <div class="form-group">
+    <label asp-for="LoginPassword"></label>
+    <span class="text-danger font-weight-bold" asp-validation-for="LoginPassword"></span>
+    <input class="form-control" asp-for="LoginPassword" value="Password1!">
+  </div>
+
+  <button class="btn btn-info bg-danger" type="submit">Login</button>
+</form>
+
+

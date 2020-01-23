@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Category";
+}
+
+<partial name="_Header"></partial>
+
+<h1 class="text-center my-2">@ViewBag.CurrentCat.Name</h1>
+
+<div class="col-md">
+            <h3>Products</h3>
+              <ul class="list-group">
+
+                @foreach (Product prod in ViewBag.ShowProds)
+                {
+                  <li class="list-group-item"><a href="/product/@prod.ProductId">@prod.Name</a></li>
+                  
+                }
+
+             </ul>
+
+        </div>

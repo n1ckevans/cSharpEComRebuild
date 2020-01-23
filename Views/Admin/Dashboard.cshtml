@@ -1,0 +1,76 @@
+ @{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<partial name="_AdminHeader"></partial>
+
+<div class="container">
+
+  <h1 class="text-center my-3">Welcome @ViewBag.User.FirstName</h1>
+
+
+    <table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th class="fixed">Order Number</th>
+            <th class="fixed">Customer</th>
+            <th class="fixed">Items</th>
+            <th class="fixed">Order Status</th>
+        </tr>
+    </thead>
+    <tbody>
+         
+        @*
+             @foreach (Wedding currentWedding in ViewBag.AllWeds)
+            {
+            
+              <tr>
+                  <td class="text-left"><a href="/@currentWedding.WeddingId">@currentWedding.Names()<a></td>
+                  <td class="text-left">@currentWedding.Date.ToShortDateString()</td>
+                  <td class="text-left">@currentWedding.Guests.Count</td>
+                  <td class="text-left">
+
+                 @if(@ViewBag.User == @currentWedding.Creator)
+                 {
+                   <a href="/delete/@currentWedding.WeddingId/">Delete</a>
+                 }
+                 
+
+                 @if (@ViewBag.User != @currentWedding.Creator)
+                 {  
+                      bool isguest = false;
+
+                      for(var i = 0; i < @currentWedding.Guests.Count; i++)
+                      {
+                        if (@currentWedding.Guests[i].UserId == @ViewBag.User.UserId)
+                        {
+                          isguest = true;
+                          break;
+                        }
+
+                      }
+
+                  if (isguest == false)
+                  {
+                    <a href="/rsvp/@currentWedding.WeddingId/">RSVP</a>
+                  }
+                    
+                  else
+                  {
+                      <a href="/unrsvp/@currentWedding.WeddingId/">Un-RSVP</a>
+                        
+                       
+                    }
+                 }
+
+               *@
+                    
+                    
+                    </td>
+              </tr>
+            
+            
+          
+    </tbody>
+</table>
+
+</div>

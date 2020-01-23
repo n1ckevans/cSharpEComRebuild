@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Nick's Skate Shop";
+}
+  
+ <partial name="_Header"></partial>
+
+ <h2 class="text-center my-2">Thank you for your order!</h2>
+
+ <h1 class="my-2">Order Summary:</h1>
+
+
+ <table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th class="fixed">Item</th>
+            <th class="fixed">Quantity</th>
+            <th class="fixed">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+         
+       
+             @foreach (Order prod in ViewBag.Items)
+            {
+            
+              <tr>
+                  <td class="text-left"><a href="/product/@prod.ProductId">@prod.ProdOrder.Name<a></td>
+                  <td class="text-left">@prod.Quantity</td>
+                  <td class="text-left">$@prod.ProdOrder.Price</td>
+                  <td class="text-left">
+
+                 
+                    
+                    
+                    </td>
+              </tr>
+            
+
+
+
+            
+
+}
+</tbody>
+</table>
