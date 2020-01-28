@@ -4,15 +4,24 @@
 
 <partial name="_Header"></partial>
 
-<img class="card-img-top" src="@ViewBag.CurrentProd.Photo" alt="@ViewBag.CurrentProd.Name">
+<div class="text-center mb-4">
 
-<h1 class="text-center my-2">@ViewBag.CurrentProd.Name</h1>
+  <img style="height: 30%; width: 30%;" class="mx-auto text-center" src="@ViewBag.CurrentProd.Photo" alt="@ViewBag.CurrentProd.Name">
+  <h1 class="text-center my-2">@ViewBag.CurrentProd.Name</h1>
 
-<p class="text-center my-2">@ViewBag.CurrentProd.Description</p>
+  <p class="text-center my-2">@ViewBag.CurrentProd.Description</p>
 
-<h3 class="text-center my-2">$@ViewBag.CurrentProd.Price</h3>
+  <h3 class="text-center my-2">$@ViewBag.CurrentProd.Price</h3>
 
-<h3>Categories</h3>
+   <a class="btn btn-success" href="/addcart/@ViewBag.CurrentProd.ProductId">Add to Cart</a>
+
+</div>
+
+
+
+
+
+@* <h3>Categories</h3>
               <ul class="list-group">
 
                  @foreach (Category cat in ViewBag.ShowCats)
@@ -21,4 +30,6 @@
                   
                 }
 
-             </ul>
+             </ul> *@
+
+             <partial name="_Footer"></partial>

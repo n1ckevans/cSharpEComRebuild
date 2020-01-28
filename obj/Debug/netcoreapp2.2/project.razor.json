@@ -3114,6 +3114,11 @@
       "FilePath": "c:\\Users\\nicho\\Documents\\Coding\\C#\\ECom\\Views\\Home\\Decks.cshtml",
       "TargetPath": "Views\\Home\\Decks.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\nicho\\Documents\\Coding\\C#\\ECom\\Views\\Home\\_Footer.cshtml",
+      "TargetPath": "Views\\Home\\_Footer.cshtml",
+      "FileKind": "mvc"
     }
   ],
   "SerializationFormat": "0.2"
