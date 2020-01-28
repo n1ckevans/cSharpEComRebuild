@@ -1,17 +1,17 @@
 @model Product
 
 @{
-    ViewData["Title"] = "All Products";
+    ViewData["Title"] = "Completes";
   
 }
 
 <partial name="_Header"></partial>
 
-<h3 class="text-center mb-2">All Products</h3>
+<h3 class="text-center mb-2">Completes</h3>
 
 <div class="row">
 
-  @foreach (Product prod in ViewBag.AllProds)
+  @foreach (Product prod in ViewBag.AllCompletes)
 {
 
      <div class="col-lg-4 col-md-6 mb-4">

@@ -45,3 +45,9 @@ C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home
 C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home\Product.g.cshtml.cs
 C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home\Summary.g.cshtml.cs
 C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home\_Header.g.cshtml.cs
+C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home\Completes.g.cshtml.cs
+C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home\Decks.g.cshtml.cs
+C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home\Parts.g.cshtml.cs
+C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home\Trucks.g.cshtml.cs
+C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home\Wheels.g.cshtml.cs
+C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home\Accessories.g.cshtml.cs

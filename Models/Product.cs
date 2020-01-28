@@ -19,7 +19,7 @@ namespace ECom.Models
 
     public double Price { get; set; }
 
-    public string PhotoPath { get; set;}
+    public string Photo { get; set;}
  
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 

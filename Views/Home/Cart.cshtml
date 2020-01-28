@@ -10,6 +10,7 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
+           <th class="fixed">Photo</th>
             <th class="fixed">Item</th>
             <th class="fixed">Quantity</th>
             <th class="fixed">Price</th>
@@ -22,6 +23,7 @@
             {
             
               <tr>
+                   <td class="text-left"><a href="/product/@prod.ProductId"><img style="width: 50px; height:70px;" class="card-img-top" src="@prod.ProdOrder.Photo" alt="@prod.ProdOrder.Name"></a></td>
                   <td class="text-left"><a href="/product/@prod.ProductId">@prod.ProdOrder.Name<a></td>
                   <td id="quantity" class="text-left">@prod.Quantity</td>
                   <td class="text-left">$@prod.ProdOrder.Price</td>

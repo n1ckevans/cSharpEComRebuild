@@ -1,5 +1,6 @@
 @{
     ViewData["Title"] = "Nick's Skate Shop";
+    var sale = @ViewBag.Prod4.Price - 2;
 }
   
  <partial name="_Header"></partial>
@@ -10,56 +11,50 @@
 	<section class="slide1">
 		<div class="wrap-slick1">
 			<div class="slick1">
+
+        	<a href="/allprod">
+							
+							
 				<div class="item-slick1 item1-slick1" style="background-image: url(../img/BAKERQ4FP.jpg);">
         	<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-					
-
-						<h2 class="caption2-slide1 xl-text1 text-body t-center animated visible-false m-b-37" data-appear="fadeInUp">
-							Baker
-						</h2>
+										
 
 						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
 				
-							<a href="/allprod" class="flex-c-m size2 text-dark bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
-								Shop Now
-							</a>
+						
 						</div>
 					</div>
 				</div>
+</a>
 
+          	<a href="/allprod">
 				<div class="item-slick1 item2-slick1" style="background-image: url(../img/PANDAFP.jpg);">
 					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 				
 
-						<h2 class="caption2-slide1 xl-text1 t-center text-secondary animated visible-false m-b-37" data-appear="lightSpeedIn">
-							ENJOI
-						</h2>
+					
 
 						<div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
 				
-							<a href="/allprod" class="flex-c-m size2 bo-rad-23 text-dark s-text2 bgwhite hov1 trans-0-4">
-								Shop Now
-							</a>
+						
 						</div>
 					</div>
 				</div>
+</a>
 
+<a href="/allprod">
 				<div class="item-slick1 item3-slick1" style="background-image: url(../img/FOYNBQ4FP.jpg);">
 					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 					
-						<h2 class="caption2-slide1 xl-text1 t-center text-primary animated visible-false m-b-37" data-appear="rotateInUpRight">
-							New arrivals
-						</h2>
+					
 
 						<div class="wrap-btn-slide1 w-size1 text-danger animated visible-false" data-appear="rotateIn">
 							
-							<a href="/allprod" class="flex-c-m text-dark size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
-								Shop Now
-							</a>
+						
 						</div>
 					</div>
 				</div>
-
+</a>
 			</div>
 		</div>
 	</section>
@@ -95,44 +90,49 @@
 					</div>
 				</div>
 
-				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-					
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="~/img/enjoi.jpeg" alt="IMG-BENNER">
-
-						<div class="block1-wrapbtn w-size2">
-							
-							<a href="/allprod" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Completes
-							</a>
-						</div>
-					</div>
-
-				
-					<div class="block1 hov-img-zoom pos-relative m-b-30">
-					
-
-						<div class="block1-wrapbtn w-size2">
-							
-						</div>
-					</div>
-				</div>
+	
 
 				<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
 				
 					<div class="block1 hov-img-zoom pos-relative m-b-30">
-						<img src="~/img/rb.jpeg" alt="IMG-BENNER">
+						<img src="~/img/thunder.jpeg" alt="IMG-BENNER">
 
 						<div class="block1-wrapbtn w-size2">
 						
 							<a href="/allprod" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-								Old School
+							Trucks
 							</a>
 						</div>
 					</div>
 
 				
 				</div>
+
+
+			<div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+					
+					<div class="block1 hov-img-zoom pos-relative m-b-30">
+						<img src="~/img/spit_tabs.jpeg" alt="IMG-BENNER">
+
+						<div class="block1-wrapbtn w-size2">
+							
+							<a href="/allprod" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+								Wheels
+							</a>
+						</div>
+					</div>
+
+				
+					<div class="block1 hov-img-zoom pos-relative m-b-30">
+					
+
+						<div class="block1-wrapbtn w-size2">
+							
+						</div>
+					</div>
+				</div>
+
+
 			</div>
 		</div>
 	</section>
@@ -154,26 +154,30 @@
 					
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-								<img src="~/img/thunder.jpeg" alt="IMG-PRODUCT">
+								<img src="@ViewBag.Prod1.Photo" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 						
 									<div class="block2-btn-addcart w-size1 trans-0-4">
 									
-										<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Add to Cart
-										</button>
+                    <form style="display: inline" action="/addcart/@ViewBag.Prod1.ProductId" method="get">
+                        <button>Add to Cart</button>
+                      </form>
+
+
+
+									
 									</div>
 								</div>
 							</div>
 
 							<div class="block2-txt p-t-20">
-								<a href="/allprod" class="block2-name dis-block s-text3 p-b-5">
-								Thunder Trucks
-								</a>
+								
+								@ViewBag.Prod1.Name
+							
 
 								<span class="block2-price m-text6 p-r-5">
-									$24.99 Each
+									$@ViewBag.Prod1.Price
 								</span>
 							</div>
 						</div>
@@ -183,27 +187,27 @@
 					
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="~/img/spit_tabs.jpeg" alt="IMG-PRODUCT">
+								<img src="@ViewBag.Prod2.Photo" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 						
 
 									<div class="block2-btn-addcart w-size1 trans-0-4">
 									
-										<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Add to Cart
-										</button>
+										 <form style="display: inline" action="/addcart/@ViewBag.Prod2.ProductId" method="get">
+                        <button>Add to Cart</button>
+                      </form>
 									</div>
 								</div>
 							</div>
 
 							<div class="block2-txt p-t-20">
-								<a href="/allprod" class="block2-name dis-block s-text3 p-b-5">
-									Spitfire Wheels
-								</a>
+						
+									@ViewBag.Prod2.Name
+							
 
 								<span class="block2-price m-text6 p-r-5">
-									$34.99
+									$@ViewBag.Prod2.Price
 								</span>
 							</div>
 						</div>
@@ -213,27 +217,27 @@
 					
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative">
-								<img src="~/img/ishod.jpeg" alt="IMG-PRODUCT">
+								<img src="@ViewBag.Prod3.Photo" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 
 
 									<div class="block2-btn-addcart w-size1 trans-0-4">
 									
-										<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Add to Cart
-										</button>
+									 <form style="display: inline" action="/addcart/@ViewBag.Prod3.ProductId" method="get">
+                        <button>Add to Cart</button>
+                      </form>
 									</div>
 								</div>
 							</div>
 
 							<div class="block2-txt p-t-20">
-								<a href="/allprod" class="block2-name dis-block s-text3 p-b-5">
-									Bronson Bearings - Ishod Wair Pro Model
-								</a>
+								
+									@ViewBag.Prod3.Name
+								
 
 								<span class="block2-price m-text6 p-r-5">
-									$26.99
+									$@ViewBag.Prod3.Price
 								</span>
 							</div>
 						</div>
@@ -243,31 +247,31 @@
 					
 						<div class="block2">
 							<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
-								<img src="~/img/grip.jpeg" alt="IMG-PRODUCT">
+								<img src="@ViewBag.Prod4.Photo" alt="IMG-PRODUCT">
 
 								<div class="block2-overlay trans-0-4">
 
 
 									<div class="block2-btn-addcart w-size1 trans-0-4">
 									
-										<button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-											Add to Cart
-										</button>
+									 <form style="display: inline" action="/addcart/@ViewBag.Prod4.ProductId" method="get">
+                        <button>Add to Cart</button>
+                      </form>
 									</div>
 								</div>
 							</div>
 
 							<div class="block2-txt p-t-20">
-								<a href="/allprod" class="block2-name dis-block s-text3 p-b-5">
-									MOB Griptape - P-Stone
-								</a>
+							
+									@ViewBag.Prod4.Name
+							
 
 								<span class="block2-oldprice m-text7 p-r-5">
-									$14.00
+									$@ViewBag.Prod4.Price
 								</span>
 
 								<span class="block2-newprice m-text8 p-r-5">
-									$12.99
+									$@sale
 								</span>
 							</div>
 						</div>

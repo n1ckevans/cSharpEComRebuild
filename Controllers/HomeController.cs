@@ -31,6 +31,13 @@ namespace ECom.Controllers
     [HttpGet("")]
     public IActionResult Index()
     {
+      // Products must be created as an Admin or Application will not compile
+      ViewBag.Prod1 = dbContext.Products.FirstOrDefault(p => p.ProductId == 1);
+      ViewBag.Prod2 = dbContext.Products.FirstOrDefault(p => p.ProductId == 4);
+      ViewBag.Prod3 = dbContext.Products.FirstOrDefault(p => p.ProductId == 5);
+      ViewBag.Prod4 = dbContext.Products.FirstOrDefault(p => p.ProductId == 6);
+      // 
+
       return View();
     }
 
@@ -39,6 +46,54 @@ namespace ECom.Controllers
     {
       ViewBag.AllProds = dbContext.Products.ToList();
       ViewBag.AllProds.Reverse();
+      return View();
+    }
+
+    [HttpGet("/decks")]
+    public IActionResult Decks()
+    {
+      ViewBag.AllDecks = dbContext.Products.Include(p => p.AssocCats).Where(pc => pc.AssocCats.Any(c => c.CategoryId == 2));
+
+      return View();
+    }
+
+    [HttpGet("/trucks")]
+    public IActionResult Trucks()
+    {
+      ViewBag.AllTrucks = dbContext.Products.Include(p => p.AssocCats).Where(pc => pc.AssocCats.Any(c => c.CategoryId == 4));
+
+      return View();
+    }
+
+    [HttpGet("/wheels")]
+    public IActionResult Wheels()
+    {
+      ViewBag.AllWheels = dbContext.Products.Include(p => p.AssocCats).Where(pc => pc.AssocCats.Any(c => c.CategoryId == 5));
+
+      return View();
+    }
+
+    [HttpGet("/completes")]
+    public IActionResult Completes()
+    {
+      ViewBag.AllCompletes = dbContext.Products.Include(p => p.AssocCats).Where(pc => pc.AssocCats.Any(c => c.CategoryId == 3));
+
+      return View();
+    }
+
+ [HttpGet("/parts")]
+    public IActionResult Parts()
+    {
+      ViewBag.AllParts = dbContext.Products.Include(p => p.AssocCats).Where(pc => pc.AssocCats.Any(c => c.CategoryId == 6));
+
+      return View();
+    }
+
+     [HttpGet("/accessories")]
+    public IActionResult Accessories()
+    {
+      ViewBag.AllAccessories = dbContext.Products.Include(p => p.AssocCats).Where(pc => pc.AssocCats.Any(c => c.CategoryId == 9));
+
       return View();
     }
 
@@ -126,7 +181,7 @@ namespace ECom.Controllers
     public IActionResult Cart()
     {
       var usercart = HttpContext.Session.GetString("Cart");
-      
+
 
       if (usercart == null)
       {
@@ -157,16 +212,17 @@ namespace ECom.Controllers
 
       foreach (Order currentOrder in cartitems)
       {
-        
+
         //This is hard-coded. Replace with User from session
         // currentOrder.UserId = 1;
-        dbContext.Orders.Add(new Order(){
-        Quantity = currentOrder.Quantity,
-        ProductId = currentOrder.ProductId,
-        UserId = currentOrder.UserId
+        dbContext.Orders.Add(new Order()
+        {
+          Quantity = currentOrder.Quantity,
+          ProductId = currentOrder.ProductId,
+          UserId = currentOrder.UserId
 
         });
-        
+
       }
 
       dbContext.SaveChanges();
@@ -178,7 +234,7 @@ namespace ECom.Controllers
     public IActionResult Summary()
     {
       var usercart = HttpContext.Session.GetString("Cart");
-      
+
 
       if (usercart == null)
       {
@@ -190,9 +246,9 @@ namespace ECom.Controllers
 
       List<Order> cartitems = JsonConvert.DeserializeObject<List<Order>>(usercart);
       ViewBag.Items = cartitems;
-      
+
       HttpContext.Session.Clear();
-      
+
       return View("Summary");
     }
 

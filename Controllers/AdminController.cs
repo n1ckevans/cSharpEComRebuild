@@ -2,21 +2,28 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ECom.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Hosting;
+
 
 namespace ECom.Controllers
 {
   public class AdminController : Controller
   {
+
     private EComContext dbContext;
-    public AdminController(EComContext context)
+    private readonly IHostingEnvironment hostingEnvironment;
+    public AdminController(EComContext context,
+                           IHostingEnvironment hostingEnvironment)
     {
       dbContext = context;
+
     }
 
     private int? _uid
@@ -49,7 +56,7 @@ namespace ECom.Controllers
     public IActionResult Admin()
     {
       return View();
-      
+
     }
 
     // Register as Admin
@@ -192,9 +199,9 @@ namespace ECom.Controllers
     }
 
 
-    
 
-    
+
+
 
     [HttpGet("/logout")]
     public IActionResult Logout()
@@ -226,7 +233,7 @@ namespace ECom.Controllers
       return View();
     }
 
- 
+
 
     [HttpGet("/allcatadmin")]
     public IActionResult AllCategoriesAdmin()
@@ -242,53 +249,53 @@ namespace ECom.Controllers
       return View();
     }
 
-    
 
-     [HttpGet("/deleteprod/{productid}")]
-      public IActionResult DeleteProd(int productid)
-      {
+
+    [HttpGet("/deleteprod/{productid}")]
+    public IActionResult DeleteProd(int productid)
+    {
       int? uid = _uid;
 
       if (!_isLoggedIn)
       {
         return RedirectToAction("Admin");
       }
-      
+
       Product CurrentProd = dbContext.Products.FirstOrDefault(p => p.ProductId == productid);
       dbContext.Products.Remove(CurrentProd);
       dbContext.SaveChanges();
 
 
       return RedirectToAction("AllProductsAdmin");
-      
+
     }
 
     [HttpGet("/deletecat/{categoryid}")]
-      public IActionResult DeleteCat(int categoryid)
-      {
+    public IActionResult DeleteCat(int categoryid)
+    {
       int? uid = _uid;
 
       if (!_isLoggedIn)
       {
         return RedirectToAction("Admin");
       }
-      
+
       Category CurrentCat = dbContext.Categories.FirstOrDefault(c => c.CategoryId == categoryid);
       dbContext.Categories.Remove(CurrentCat);
       dbContext.SaveChanges();
 
 
       return RedirectToAction("AllCategoriesAdmin");
-      
+
     }
 
 
-      [HttpGet("/adminproduct/{productid}")]
-     public IActionResult AdminProduct(int productid)
+    [HttpGet("/adminproduct/{productid}")]
+    public IActionResult AdminProduct(int productid)
     {
       ViewBag.CurrentProd = dbContext.Products.Include(c => c.AssocCats).FirstOrDefault(p => p.ProductId == productid);
 
-       ViewBag.AddCats = dbContext.Categories.Include(c => c.AssocProds).Where(cp => !cp.AssocProds.Any(pc => pc.ProductId == productid));
+      ViewBag.AddCats = dbContext.Categories.Include(c => c.AssocProds).Where(cp => !cp.AssocProds.Any(pc => pc.ProductId == productid));
 
       ViewBag.ShowCats = dbContext.Categories.Include(c => c.AssocProds).Where(cp => cp.AssocProds.Any(pc => pc.ProductId == productid));
 
@@ -298,14 +305,14 @@ namespace ECom.Controllers
     [HttpGet("admincategory/{categoryid}")]
     public IActionResult AdminCategory(int categoryid)
     {
-      
+
       ViewBag.CurrentCat = dbContext.Categories.Include(c => c.AssocProds).FirstOrDefault(p => p.CategoryId == categoryid);
 
-      ViewBag.AddProds= dbContext.Products.Include(p => p.AssocCats).Where(pc => !pc.AssocCats.Any(c => c.CategoryId == categoryid));
+      ViewBag.AddProds = dbContext.Products.Include(p => p.AssocCats).Where(pc => !pc.AssocCats.Any(c => c.CategoryId == categoryid));
 
 
-      ViewBag.ShowProds= dbContext.Products.Include(p => p.AssocCats).Where(pc => pc.AssocCats.Any(c => c.CategoryId == categoryid));
-      
+      ViewBag.ShowProds = dbContext.Products.Include(p => p.AssocCats).Where(pc => pc.AssocCats.Any(c => c.CategoryId == categoryid));
+
       return View();
     }
 
@@ -313,35 +320,35 @@ namespace ECom.Controllers
     [HttpPost("/addprodcat")]
     public IActionResult AddProdCat(Association newAssoc)
     {
-       int id = newAssoc.ProductId;
+      int id = newAssoc.ProductId;
 
-      
+
       if (dbContext.Associations.FirstOrDefault(p => p.ProductId == newAssoc.ProductId && p.CategoryId == newAssoc.CategoryId) != null)
       {
-        return RedirectToAction("AdminProduct", new {productid = id});
+        return RedirectToAction("AdminProduct", new { productid = id });
       }
 
       dbContext.Associations.Add(newAssoc);
       dbContext.SaveChanges();
-      return RedirectToAction("AdminProduct", new {productid = id});
+      return RedirectToAction("AdminProduct", new { productid = id });
     }
 
-    
+
 
     [HttpPost("/addcatprod")]
     public IActionResult AddCatProd(Association newAssoc)
     {
-       int id = newAssoc.CategoryId;
+      int id = newAssoc.CategoryId;
 
-      
+
       if (dbContext.Associations.FirstOrDefault(c => c.CategoryId == newAssoc.CategoryId && c.ProductId == newAssoc.ProductId) != null)
       {
-        return RedirectToAction("AdminCategory", new {categoryid = id});
+        return RedirectToAction("AdminCategory", new { categoryid = id });
       }
 
       dbContext.Associations.Add(newAssoc);
       dbContext.SaveChanges();
-      return RedirectToAction("AdminCategory", new {categoryid = id});
+      return RedirectToAction("AdminCategory", new { categoryid = id });
     }
 
   }
