@@ -51,3 +51,4 @@ C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home
 C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home\Trucks.g.cshtml.cs
 C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home\Wheels.g.cshtml.cs
 C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home\Accessories.g.cshtml.cs
+C:\Users\nicho\Documents\Coding\C#\ECom\obj\Debug\netcoreapp2.2\Razor\Views\Home\_Footer.g.cshtml.cs

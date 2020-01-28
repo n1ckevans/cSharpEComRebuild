@@ -15,6 +15,7 @@ namespace ECom.Controllers
   public class HomeController : Controller
   {
     private EComContext dbContext;
+
     public HomeController(EComContext context)
     {
       dbContext = context;
@@ -44,10 +45,13 @@ namespace ECom.Controllers
     [HttpGet("/allprod")]
     public IActionResult AllProducts()
     {
+
+      
       ViewBag.AllProds = dbContext.Products.ToList();
-      ViewBag.AllProds.Reverse();
-      return View();
+           return View();
     }
+
+
 
     [HttpGet("/decks")]
     public IActionResult Decks()
