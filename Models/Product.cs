@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Web;         
-using Microsoft.AspNetCore.Mvc;                       
+using System.Web;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ECom.Models
 {
@@ -19,15 +19,34 @@ namespace ECom.Models
 
     public double Price { get; set; }
 
-    public string Photo { get; set;}
- 
+    public string Photo { get; set; }
+
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
     public List<Association> AssocCats { get; set; }
 
-   
-    
+    public ICollection<OrderItem> OrderItems { get; set; }
+
+    public bool isNew()
+    {
+      DateTime productDate = this.UpdatedAt;
+      DateTime checkDate1 = DateTime.Now.AddMonths(-1);
+      DateTime checkDate2 = DateTime.Now.AddMonths(1);
+
+      if (productDate >= checkDate1 && productDate <= checkDate2)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+
+
+
+    }
+
   }
 }

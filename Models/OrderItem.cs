@@ -8,26 +8,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECom.Models
 {
-  public class Order
+  public class OrderItem
   {
-    [Key] public int OrderId { get; set; }
+    [Key]
+    public int OrderItemId { get; set; }
 
     public int Quantity { get; set; }
-
-    public int ProductId { get; set; }
-
-    public Product ProdOrder { get; set; }
-    public int UserId { get; set; }
-
-    public User User { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
-    public ICollection<OrderItemAssociation> OrderItemAssociations { get; set; }
+    public Product Product { get; set; }
 
-    public ICollection<ShippingAddress> ShippingAddress { get; set; }
+    public ICollection<OrderItemAssociation> OrderItemAssociations { get; set; }
 
   }
 }

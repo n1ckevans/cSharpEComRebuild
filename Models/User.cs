@@ -39,6 +39,10 @@ namespace ECom.Models
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
+    public ICollection<Order> Orders { get; set; }
+
+    public ICollection<ShippingAddress> ShippingAddress { get; set; }
+
     public string FullName()
     {
       return FirstName + " " + LastName;
